@@ -11,7 +11,6 @@ struct MarkFlowApp: App {
     var body: some Scene {
         DocumentGroup(newDocument: MarkdownDocument()) { file in
             EditorView(document: file.$document)
-                .background(WindowTabbingConfigurator())
         }
         .commands {
             CommandGroup(after: .newItem) {
@@ -31,11 +30,13 @@ struct MarkFlowApp: App {
 @MainActor
 final class AppDelegate: NSObject, NSApplicationDelegate {
     @objc func print(_ sender: Any?) {
-        NotificationCenter.default.post(name: .markFlowPrintRequested, object: nil)
+        let targetWindow = NSApplication.shared.keyWindow ?? NSApplication.shared.mainWindow
+        NotificationCenter.default.post(name: .markFlowPrintRequested, object: targetWindow)
     }
 
     @objc func printDocument(_ sender: Any?) {
-        NotificationCenter.default.post(name: .markFlowPrintRequested, object: nil)
+        let targetWindow = NSApplication.shared.keyWindow ?? NSApplication.shared.mainWindow
+        NotificationCenter.default.post(name: .markFlowPrintRequested, object: targetWindow)
     }
 
     func applicationDidFinishLaunching(_ notification: Notification) {

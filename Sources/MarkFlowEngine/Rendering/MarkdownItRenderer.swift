@@ -78,7 +78,6 @@ private final class MarkdownItRuntime: @unchecked Sendable {
 
     private let queue = DispatchQueue(label: "com.vikrant.markflow.markdown-it-runtime")
     private var state: RuntimeState?
-    private var didAttemptStateInit = false
 
     private init() {
     }
@@ -110,10 +109,6 @@ private final class MarkdownItRuntime: @unchecked Sendable {
         if let state {
             return state
         }
-        if didAttemptStateInit {
-            throw MarkdownItRuntimeError.runtimeUnavailable
-        }
-        didAttemptStateInit = true
 
         guard !markdownItJS.isEmpty else {
             throw MarkdownItRuntimeError.missingLibrary
@@ -127,54 +122,63 @@ private final class MarkdownItRuntime: @unchecked Sendable {
         context.evaluateScript(markdownItJS)
         context.evaluateScript(
             """
-            function __render_markdown(source, typographer, syntaxHighlighting) {
-              if (typeof markdownit !== 'function') {
-                return '';
-              }
-              const md = markdownit({
+            var __mf_md = null;
+            var __mf_typographer = null;
+            var __mf_mapIndex = 0;
+            var __mf_syntaxHighlighting = false;
+
+            function __mf_ensure_md(typographer) {
+              if (__mf_md !== null && __mf_typographer === typographer) { return; }
+              if (typeof markdownit !== 'function') { return; }
+              __mf_typographer = typographer;
+              __mf_md = markdownit({
                 html: false,
                 linkify: true,
                 breaks: false,
-                typographer: !!typographer
+                typographer: typographer
               });
-              const useSyntaxHighlighting = !!syntaxHighlighting;
-              let mapIndex = { value: 0 };
-              const originalRenderToken = md.renderer.renderToken.bind(md.renderer);
-              md.renderer.renderToken = function(tokens, idx, options, env, self) {
+              const originalRenderToken = __mf_md.renderer.renderToken.bind(__mf_md.renderer);
+              __mf_md.renderer.renderToken = function(tokens, idx, options, env, self) {
                 const token = tokens[idx];
                 if (token && token.nesting === 1 && token.block && Array.isArray(token.map)) {
                   const startLine = token.map[0];
                   const endLine = Math.max(token.map[1] - 1, startLine);
-                  token.attrSet('id', 'src-map-' + mapIndex.value);
+                  token.attrSet('id', 'src-map-' + __mf_mapIndex);
                   token.attrSet('data-src-start', String(startLine));
                   token.attrSet('data-src-end', String(endLine));
-                  mapIndex.value += 1;
+                  __mf_mapIndex += 1;
                 }
                 return originalRenderToken(tokens, idx, options, env, self);
               };
-
-              md.renderer.rules.fence = function(tokens, idx, options, env, self) {
+              __mf_md.renderer.rules.fence = function(tokens, idx, options, env, self) {
                 const token = tokens[idx];
-                const info = token.info ? md.utils.unescapeAll(token.info).trim() : '';
+                const info = token.info ? __mf_md.utils.unescapeAll(token.info).trim() : '';
                 const langName = info ? info.split(/\\s+/g)[0] : '';
                 const langPrefix = options && options.langPrefix ? options.langPrefix : 'language-';
-                const languageClass = useSyntaxHighlighting && langName
-                  ? ' class="' + langPrefix + md.utils.escapeHtml(langName) + '"'
+                const languageClass = __mf_syntaxHighlighting && langName
+                  ? ' class="' + langPrefix + __mf_md.utils.escapeHtml(langName) + '"'
                   : '';
-
                 let attrs = '';
                 if (token.block && Array.isArray(token.map)) {
                   const startLine = token.map[0];
                   const endLine = Math.max(token.map[1] - 1, startLine);
-                  attrs += ' id="src-map-' + mapIndex.value + '"';
+                  attrs += ' id="src-map-' + __mf_mapIndex + '"';
                   attrs += ' data-src-start="' + String(startLine) + '"';
                   attrs += ' data-src-end="' + String(endLine) + '"';
-                  mapIndex.value += 1;
+                  __mf_mapIndex += 1;
                 }
-
-                return '<pre' + attrs + '><code' + languageClass + '>' + md.utils.escapeHtml(token.content) + '</code></pre>\\n';
+                return '<pre' + attrs + '><code' + languageClass + '>' + __mf_md.utils.escapeHtml(token.content) + '</code></pre>\\n';
               };
-              return md.render(source);
+            }
+
+            function __render_markdown(source, typographer, syntaxHighlighting) {
+              if (typeof markdownit !== 'function') { return ''; }
+              const useTypographer = !!typographer;
+              __mf_syntaxHighlighting = !!syntaxHighlighting;
+              __mf_ensure_md(useTypographer);
+              if (__mf_md === null) { return ''; }
+              __mf_mapIndex = 0;
+              return __mf_md.render(source);
             }
             """
         )
@@ -195,7 +199,6 @@ private final class MarkdownItRuntime: @unchecked Sendable {
 
 private enum MarkdownItRuntimeError: LocalizedError {
     case missingLibrary
-    case runtimeUnavailable
     case runtimeSetupFailed(String)
     case functionUnavailable
     case functionCallFailed
@@ -205,8 +208,6 @@ private enum MarkdownItRuntimeError: LocalizedError {
         switch self {
         case .missingLibrary:
             return "Bundled markdown-it JavaScript is missing."
-        case .runtimeUnavailable:
-            return "Markdown runtime is unavailable after initialization failure."
         case let .runtimeSetupFailed(details):
             return "Failed to initialize markdown runtime (\(details))."
         case .functionUnavailable:

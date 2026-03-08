@@ -141,16 +141,8 @@ final class SourceNSTextView: NSTextView {
     }
 
     private func characterIndexForCommandClick(at point: NSPoint) -> Int? {
-        let insertionIndex = characterIndexForInsertion(at: point)
-        if insertionIndex != NSNotFound {
-            return insertionIndex
-        }
-
-        guard let layoutManager, let textContainer else { return nil }
-        let containerOrigin = textContainerOrigin
-        let inContainer = NSPoint(x: point.x - containerOrigin.x, y: point.y - containerOrigin.y)
-        let glyphIndex = layoutManager.glyphIndex(for: inContainer, in: textContainer)
-        return layoutManager.characterIndexForGlyph(at: glyphIndex)
+        let index = characterIndexForInsertion(at: point)
+        return index == NSNotFound ? nil : index
     }
 }
 

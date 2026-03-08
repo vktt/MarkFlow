@@ -10,6 +10,7 @@ struct EditorView: View {
     @State private var exporter = WebKitPDFExporter()
     @State private var sourceJumpRequest: SourceJumpRequest?
     @State private var previewJumpAnchor: String?
+    @State private var hostingWindow: NSWindow?
 
     init(document: Binding<MarkdownDocument>) {
         _document = document
@@ -52,6 +53,7 @@ struct EditorView: View {
             }
         }
         .id(splitViewIdentity)
+        .background(HostingWindowAccessor(window: $hostingWindow))
         .navigationTitle(title)
         .toolbar {
             ToolbarItemGroup(placement: .automatic) {
@@ -80,7 +82,12 @@ struct EditorView: View {
                 viewModel.updateSource(newText)
             }
         }
-        .onReceive(NotificationCenter.default.publisher(for: .markFlowPrintRequested)) { _ in
+        .onReceive(NotificationCenter.default.publisher(for: .markFlowPrintRequested)) { notification in
+            guard let targetWindow = notification.object as? NSWindow,
+                  let hostingWindow,
+                  targetWindow == hostingWindow else {
+                return
+            }
             printDocument()
         }
         .alert("Export Error", isPresented: Binding(
@@ -101,10 +108,39 @@ struct EditorView: View {
     }
 
     private var title: String {
-        document.text
-            .split(separator: "\n")
-            .first
-            .map(String.init) ?? "Markdown"
+        let firstLine = String(document.text.prefix(while: { $0 != "\n" }))
+        if let headingTitle = parsedHeadingTitle(from: firstLine), !headingTitle.isEmpty {
+            return headingTitle
+        }
+        return firstLine.isEmpty ? "Markdown" : firstLine
+    }
+
+    private func parsedHeadingTitle(from line: String) -> String? {
+        var index = line.startIndex
+        var leadingSpaces = 0
+
+        while index < line.endIndex, line[index] == " ", leadingSpaces < 4 {
+            leadingSpaces += 1
+            index = line.index(after: index)
+        }
+
+        guard leadingSpaces <= 3 else { return nil }
+
+        var hashCount = 0
+        while index < line.endIndex, line[index] == "#", hashCount < 7 {
+            hashCount += 1
+            index = line.index(after: index)
+        }
+
+        guard (1...6).contains(hashCount) else { return nil }
+        guard index == line.endIndex || line[index] == " " || line[index] == "\t" else { return nil }
+
+        var headingText = String(line[index...]).trimmingCharacters(in: .whitespaces)
+        while headingText.last == "#" {
+            headingText.removeLast()
+        }
+        headingText = headingText.trimmingCharacters(in: .whitespaces)
+        return headingText.isEmpty ? nil : headingText
     }
 
     private func togglePreview() {
@@ -142,6 +178,22 @@ struct EditorView: View {
             } catch {
                 viewModel.setError(error.localizedDescription)
             }
+        }
+    }
+}
+
+private struct HostingWindowAccessor: NSViewRepresentable {
+    @Binding var window: NSWindow?
+
+    func makeNSView(context: Context) -> NSView {
+        let view = NSView()
+        DispatchQueue.main.async { window = view.window }
+        return view
+    }
+
+    func updateNSView(_ nsView: NSView, context: Context) {
+        if window?.windowNumber != nsView.window?.windowNumber {
+            window = nsView.window
         }
     }
 }

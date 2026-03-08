@@ -20,7 +20,7 @@ extension MarkdownExportError: LocalizedError {
 }
 
 @MainActor
-public final class WebKitPDFExporter: NSObject, MarkdownExporting, @unchecked Sendable {
+public final class WebKitPDFExporter: NSObject, MarkdownExporting {
     private static let htmlLoadTimeoutSeconds: TimeInterval = 20
 
     private var offscreenWebView: WKWebView?
@@ -104,8 +104,18 @@ public final class WebKitPDFExporter: NSObject, MarkdownExporting, @unchecked Se
 private extension WKWebView {
     @MainActor
     func waitForStableLayout() async {
-        try? await evaluateJavaScriptNoResult("document.readyState")
-        try? await Task.sleep(for: .milliseconds(120))
+        _ = try? await withCheckedThrowingContinuation { (continuation: CheckedContinuation<Any, Error>) in
+            callAsyncJavaScript(
+                "await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r)))",
+                arguments: [:],
+                in: nil,
+                in: .defaultClient
+            ) { result in
+                Task { @MainActor in
+                    continuation.resume(with: result)
+                }
+            }
+        }
     }
 
     @MainActor
@@ -154,18 +164,6 @@ private extension WKWebView {
         }
     }
 
-    @MainActor
-    func evaluateJavaScriptNoResult(_ source: String) async throws {
-        try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<Void, Error>) in
-            evaluateJavaScript(source) { _, error in
-                if let error {
-                    continuation.resume(throwing: error)
-                } else {
-                    continuation.resume(returning: ())
-                }
-            }
-        }
-    }
 }
 
 @MainActor

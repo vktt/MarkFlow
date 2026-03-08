@@ -23,6 +23,7 @@ final class EditorViewModel: ObservableObject {
     private let renderOptions: RenderOptions
     private var mappings: [PreviewBlockMapping] = []
     private var renderTask: Task<Void, Never>?
+    private var activeDetachedTask: Task<RenderedState, Never>?
     private var renderVersion: UInt64 = 0
     private var lastRenderError: String?
 
@@ -46,6 +47,7 @@ final class EditorViewModel: ObservableObject {
 
     deinit {
         renderTask?.cancel()
+        activeDetachedTask?.cancel()
     }
 
     func updateSource(_ text: String) {
@@ -77,6 +79,8 @@ final class EditorViewModel: ObservableObject {
 
     private func enqueueRender(for text: String, debounce: Bool) {
         renderTask?.cancel()
+        activeDetachedTask?.cancel()
+        activeDetachedTask = nil
         renderVersion &+= 1
         let version = renderVersion
         let renderer = self.renderer
@@ -88,9 +92,13 @@ final class EditorViewModel: ObservableObject {
             }
             guard !Task.isCancelled else { return }
 
-            let renderedState = await Task.detached(priority: .userInitiated) {
+            let detached = Task.detached(priority: .userInitiated) {
                 Self.renderedState(markdown: text, renderer: renderer, options: options)
-            }.value
+            }
+            self?.activeDetachedTask = detached
+
+            let renderedState = await detached.value
+            self?.activeDetachedTask = nil
             guard !Task.isCancelled else { return }
 
             self?.apply(renderedState, version: version)

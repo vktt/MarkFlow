@@ -25,6 +25,10 @@ struct MarkdownPreviewWebView: NSViewRepresentable {
         Coordinator(onCommandClickSourceLine: onCommandClickSourceLine)
     }
 
+    static func dismantleNSView(_ nsView: WKWebView, coordinator: Coordinator) {
+        nsView.configuration.userContentController.removeScriptMessageHandler(forName: "previewSync")
+    }
+
     func makeNSView(context: Context) -> WKWebView {
         let config = WKWebViewConfiguration()
         config.defaultWebpagePreferences.allowsContentJavaScript = true
@@ -53,7 +57,7 @@ struct MarkdownPreviewWebView: NSViewRepresentable {
 
         let view = WKWebView(frame: .zero, configuration: config)
         view.navigationDelegate = context.coordinator
-        view.setValue(false, forKey: "drawsBackground")
+        view.underPageBackgroundColor = .clear
         context.coordinator.lastHTML = html
         view.loadHTMLString(html, baseURL: nil)
         return view
@@ -111,7 +115,11 @@ struct MarkdownPreviewWebView: NSViewRepresentable {
         }
 
         private func jump(to anchor: String, in webView: WKWebView) {
-            let escaped = anchor.replacingOccurrences(of: "'", with: "\\'")
+            let escaped = anchor
+                .replacingOccurrences(of: "\\", with: "\\\\")
+                .replacingOccurrences(of: "'", with: "\\'")
+                .replacingOccurrences(of: "\n", with: "\\n")
+                .replacingOccurrences(of: "\r", with: "\\r")
             let js = """
             (function() {
               var el = document.getElementById('\(escaped)');
