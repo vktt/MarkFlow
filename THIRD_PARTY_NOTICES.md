@@ -37,10 +37,3 @@ SOFTWARE.
   - `Sources/MarkFlowEngine/Resources/fonts/cmunbx.ttf`
   - `Sources/MarkFlowEngine/Resources/fonts/cmunbi.ttf`
 
-Current status:
-- These are CMU-named font files (`cmun*`), not Latin Modern Roman file names.
-- A standalone font license text is not currently stored in this repository.
-
-Before public distribution:
-- Confirm the exact upstream source and license for these font binaries.
-- Add the font license text (or replace these fonts with a vetted alternative and include its license notice).
