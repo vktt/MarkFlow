@@ -1,0 +1,104 @@
+:root {
+  color-scheme: light dark;
+  --bg: #ffffff;
+  --fg: CanvasText;
+  --muted: color-mix(in oklab, CanvasText 65%, transparent);
+  --panel: color-mix(in oklab, Canvas 96%, transparent);
+  --code-bg: color-mix(in oklab, CanvasText 4%, transparent);
+  --border: color-mix(in oklab, CanvasText 15%, transparent);
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: "CMU Serif", "Computer Modern Serif", "Latin Modern Roman", "STIX Two Text", "Times New Roman", serif;
+  line-height: 1.6;
+}
+
+.markdown-body {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 24px;
+  word-break: break-word;
+}
+
+body[data-soft-wrap="false"] .markdown-body {
+  white-space: pre;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  line-height: 1.25;
+  margin-top: 1.35em;
+  margin-bottom: 0.5em;
+}
+
+.markdown-body > :first-child {
+  margin-top: 0;
+}
+
+p, ul, ol, blockquote, table, pre {
+  margin: 0.9em 0;
+}
+
+blockquote {
+  border-left: 3px solid var(--border);
+  padding: 0.2em 1em;
+  color: var(--muted);
+  background: var(--panel);
+  border-radius: 8px;
+}
+
+code,
+pre {
+  font-family: ui-monospace, Menlo, SFMono-Regular, monospace;
+}
+
+code {
+  background: var(--code-bg);
+  padding: 0.1em 0.35em;
+  border-radius: 5px;
+}
+
+pre code {
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+}
+
+pre {
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px;
+  overflow: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid var(--border);
+}
+
+th, td {
+  border: 1px solid var(--border);
+  text-align: left;
+  padding: 6px 9px;
+}
+
+a {
+  color: #0f6fff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.sync-target {
+  outline: 2px solid color-mix(in oklab, #0f6fff 55%, transparent);
+  outline-offset: 3px;
+  transition: outline-color 220ms ease;
+}

@@ -1,0 +1,46 @@
+# Third-Party Notices
+
+This project bundles third-party assets. Their licenses remain with their respective authors.
+
+## markdown-it
+- Component: `Sources/MarkFlowEngine/Resources/markdown-it.min.js`
+- Upstream: https://github.com/markdown-it/markdown-it
+- License: MIT
+- In-file header includes: `/*! markdown-it ... @license MIT */`
+
+MIT License (markdown-it):
+
+Copyright (c) markdown-it
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+## Bundled serif fonts
+- Files:
+  - `Sources/MarkFlowEngine/Resources/fonts/cmunrm.ttf`
+  - `Sources/MarkFlowEngine/Resources/fonts/cmunti.ttf`
+  - `Sources/MarkFlowEngine/Resources/fonts/cmunbx.ttf`
+  - `Sources/MarkFlowEngine/Resources/fonts/cmunbi.ttf`
+
+Current status:
+- These are CMU-named font files (`cmun*`), not Latin Modern Roman file names.
+- A standalone font license text is not currently stored in this repository.
+
+Before public distribution:
+- Confirm the exact upstream source and license for these font binaries.
+- Add the font license text (or replace these fonts with a vetted alternative and include its license notice).

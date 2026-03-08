@@ -1,0 +1,23 @@
+# macOS / editor noise
+.DS_Store
+*.swp
+*.swo
+
+# SwiftPM / Xcode build artifacts
+.build/
+.swiftpm/
+.xcodebuild/
+DerivedData/
+
+# Xcode user state
+*.xcuserstate
+*.xcworkspace/xcuserdata/
+*.xcodeproj/xcuserdata/
+
+# Test / runtime temp files
+*.log
+*.tmp
+*.temp
+
+# Local tooling caches
+.cache/

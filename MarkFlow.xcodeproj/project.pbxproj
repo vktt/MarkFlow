@@ -1,0 +1,514 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2C5E5A6EA69489C9332C8272 /* MarkFlowEngine in Frameworks */ = {isa = PBXBuildFile; productRef = 57483A3C87678689926A95FA /* MarkFlowEngine */; };
+		2CAD6BF3DB110C4E8116358C /* EditorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0927475E646FA7248F980E30 /* EditorViewModel.swift */; };
+		460F8207DAB05C8F2D06F1F8 /* MarkdownDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA0D4282B11F2A849BC938F /* MarkdownDocument.swift */; };
+		80BD3D5A10469F8E0808C559 /* EditorCommandMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A416383D5CEF87B3FB86F3 /* EditorCommandMenu.swift */; };
+		9C83CFF65474589992C2F6B1 /* EditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68250A506C696FEE847D1E54 /* EditorView.swift */; };
+		9DBF8CC78586885920FBCD55 /* MarkFlowApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4809C514BED53510670EC6 /* MarkFlowApp.swift */; };
+		A1C084220F01C8B9E90ED6F4 /* Xcode/Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A9B27019A4AAEF280404D0B4 /* Xcode/Assets.xcassets */; };
+		A398F7DB30AE4B4CBFE89CDB /* Xcode/MarkFlow.icon in Resources */ = {isa = PBXBuildFile; fileRef = 25CFF1D3A2684D5CA130EB3D /* Xcode/MarkFlow.icon */; };
+		CB06D497AFE26773F96F7BE3 /* MarkdownPreviewWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82444F6116F80B2FB5B1252 /* MarkdownPreviewWebView.swift */; };
+		D31B09BAF2E641FF8E6600A3 /* SourceTextEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A1CE9A68D84D06B8586E30 /* SourceTextEditorView.swift */; };
+		D897F6AC48D1DCAFEBDB3CF5 /* WindowTabbingConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33ECE31EC370E4DDC45E8DD /* WindowTabbingConfigurator.swift */; };
+		DF8D48D85FA9201C120AE2D0 /* EditorViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FA257D3C6850C1217B7C39 /* EditorViewModelTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F3EFF3BFB9E5CC75B65F492A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B2D64F7799F55A4DF8916095 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D8C9893DC8ED0E00E85F8AD2;
+			remoteInfo = MarkFlowApp;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0927475E646FA7248F980E30 /* EditorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorViewModel.swift; sourceTree = "<group>"; };
+		1BF4334216C8076D49A0A795 /* MarkFlow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarkFlow.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		25CFF1D3A2684D5CA130EB3D /* Xcode/MarkFlow.icon */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Xcode/MarkFlow.icon; sourceTree = SOURCE_ROOT; };
+		58C960BC4F8A1B14BFDADC97 /* MarkFlowAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MarkFlowAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		68250A506C696FEE847D1E54 /* EditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorView.swift; sourceTree = "<group>"; };
+		76A1CE9A68D84D06B8586E30 /* SourceTextEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceTextEditorView.swift; sourceTree = "<group>"; };
+		83FA257D3C6850C1217B7C39 /* EditorViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorViewModelTests.swift; sourceTree = "<group>"; };
+		92A416383D5CEF87B3FB86F3 /* EditorCommandMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorCommandMenu.swift; sourceTree = "<group>"; };
+		A9B27019A4AAEF280404D0B4 /* Xcode/Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Xcode/Assets.xcassets; sourceTree = SOURCE_ROOT; };
+		AF4809C514BED53510670EC6 /* MarkFlowApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkFlowApp.swift; sourceTree = "<group>"; };
+		C33ECE31EC370E4DDC45E8DD /* WindowTabbingConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowTabbingConfigurator.swift; sourceTree = "<group>"; };
+		C829E26D7E96A123ADF3B3F3 /* MarkFlow */ = {isa = PBXFileReference; lastKnownFileType = folder; name = MarkFlow; path = .; sourceTree = SOURCE_ROOT; };
+		CCA0D4282B11F2A849BC938F /* MarkdownDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownDocument.swift; sourceTree = "<group>"; };
+		F82444F6116F80B2FB5B1252 /* MarkdownPreviewWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownPreviewWebView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		737B966CA81EED43F5667610 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2C5E5A6EA69489C9332C8272 /* MarkFlowEngine in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		09C8EA69DFD006AEFAB3B8EB = {
+			isa = PBXGroup;
+			children = (
+				1AA668359EFA8DA150F06485 /* MarkFlowApp */,
+				1F88EC3C2A7E8B1C68274246 /* MarkFlowAppTests */,
+				A9B27019A4AAEF280404D0B4 /* Xcode/Assets.xcassets */,
+				25CFF1D3A2684D5CA130EB3D /* Xcode/MarkFlow.icon */,
+				8188E2EE7614291DFEDCB265 /* Packages */,
+				FF3409BE95E7DBEAE71223FE /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		1AA668359EFA8DA150F06485 /* MarkFlowApp */ = {
+			isa = PBXGroup;
+			children = (
+				92A416383D5CEF87B3FB86F3 /* EditorCommandMenu.swift */,
+				68250A506C696FEE847D1E54 /* EditorView.swift */,
+				0927475E646FA7248F980E30 /* EditorViewModel.swift */,
+				CCA0D4282B11F2A849BC938F /* MarkdownDocument.swift */,
+				AF4809C514BED53510670EC6 /* MarkFlowApp.swift */,
+				F82444F6116F80B2FB5B1252 /* MarkdownPreviewWebView.swift */,
+				76A1CE9A68D84D06B8586E30 /* SourceTextEditorView.swift */,
+				C33ECE31EC370E4DDC45E8DD /* WindowTabbingConfigurator.swift */,
+			);
+			name = MarkFlowApp;
+			path = Sources/MarkFlowApp;
+			sourceTree = "<group>";
+		};
+		1F88EC3C2A7E8B1C68274246 /* MarkFlowAppTests */ = {
+			isa = PBXGroup;
+			children = (
+				83FA257D3C6850C1217B7C39 /* EditorViewModelTests.swift */,
+			);
+			name = MarkFlowAppTests;
+			path = Tests/MarkFlowAppTests;
+			sourceTree = "<group>";
+		};
+		8188E2EE7614291DFEDCB265 /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				C829E26D7E96A123ADF3B3F3 /* MarkFlow */,
+			);
+			name = Packages;
+			sourceTree = "<group>";
+		};
+		FF3409BE95E7DBEAE71223FE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1BF4334216C8076D49A0A795 /* MarkFlow.app */,
+				58C960BC4F8A1B14BFDADC97 /* MarkFlowAppTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D8C9893DC8ED0E00E85F8AD2 /* MarkFlowApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 835275E1A3B2D6D283167F99 /* Build configuration list for PBXNativeTarget "MarkFlowApp" */;
+			buildPhases = (
+				059581AF450AE8701A82C4CE /* Sources */,
+				737B966CA81EED43F5667610 /* Frameworks */,
+				EAFB9C4BFC8445C48CD664A4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MarkFlowApp;
+			packageProductDependencies = (
+				57483A3C87678689926A95FA /* MarkFlowEngine */,
+			);
+			productName = MarkFlowApp;
+			productReference = 1BF4334216C8076D49A0A795 /* MarkFlow.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D93D256E2AE8E0B2C696F704 /* MarkFlowAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D9406FEBC98044547412D66E /* Build configuration list for PBXNativeTarget "MarkFlowAppTests" */;
+			buildPhases = (
+				1A78B5909B15B1B7A3798DFC /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5F13B945AE330D00666A6694 /* PBXTargetDependency */,
+			);
+			name = MarkFlowAppTests;
+			packageProductDependencies = (
+			);
+			productName = MarkFlowAppTests;
+			productReference = 58C960BC4F8A1B14BFDADC97 /* MarkFlowAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B2D64F7799F55A4DF8916095 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 2630;
+			};
+			buildConfigurationList = 3F5D95269B620F5A12046B15 /* Build configuration list for PBXProject "MarkFlow" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 09C8EA69DFD006AEFAB3B8EB;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				C59633FA568ED4A529244835 /* XCLocalSwiftPackageReference "." */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = FF3409BE95E7DBEAE71223FE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D8C9893DC8ED0E00E85F8AD2 /* MarkFlowApp */,
+				D93D256E2AE8E0B2C696F704 /* MarkFlowAppTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EAFB9C4BFC8445C48CD664A4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A1C084220F01C8B9E90ED6F4 /* Xcode/Assets.xcassets in Resources */,
+				A398F7DB30AE4B4CBFE89CDB /* Xcode/MarkFlow.icon in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		059581AF450AE8701A82C4CE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				80BD3D5A10469F8E0808C559 /* EditorCommandMenu.swift in Sources */,
+				9C83CFF65474589992C2F6B1 /* EditorView.swift in Sources */,
+				2CAD6BF3DB110C4E8116358C /* EditorViewModel.swift in Sources */,
+				460F8207DAB05C8F2D06F1F8 /* MarkdownDocument.swift in Sources */,
+				9DBF8CC78586885920FBCD55 /* MarkFlowApp.swift in Sources */,
+				CB06D497AFE26773F96F7BE3 /* MarkdownPreviewWebView.swift in Sources */,
+				D31B09BAF2E641FF8E6600A3 /* SourceTextEditorView.swift in Sources */,
+				D897F6AC48D1DCAFEBDB3CF5 /* WindowTabbingConfigurator.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1A78B5909B15B1B7A3798DFC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DF8D48D85FA9201C120AE2D0 /* EditorViewModelTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5F13B945AE330D00666A6694 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D8C9893DC8ED0E00E85F8AD2 /* MarkFlowApp */;
+			targetProxy = F3EFF3BFB9E5CC75B65F492A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		21581CEC36D40347B5EDA4BB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				SDKROOT = macosx;
+				SUPPORTED_PLATFORMS = macosx;
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				TARGETED_DEVICE_FAMILY = "";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MarkFlow.app/Contents/MacOS/MarkFlow";
+			};
+			name = Release;
+		};
+		591A5F6B67F4879FFC423742 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				SDKROOT = macosx;
+				SUPPORTED_PLATFORMS = macosx;
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				TARGETED_DEVICE_FAMILY = "";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MarkFlow.app/Contents/MacOS/MarkFlow";
+			};
+			name = Debug;
+		};
+		9BA503FCD30F931CC2986E08 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 6.0;
+			};
+			name = Debug;
+		};
+		A82EB3FC501F6287AAF49A15 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Xcode/MarkFlowApp.entitlements;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
+				ENABLE_USER_SELECTED_FILES = readwrite;
+				GENERATE_INFOPLIST_FILE = NO;
+				ICON_FILE = "";
+				INFOPLIST_FILE = "Xcode/MarkFlow-Info.plist";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.vikrant.markflow;
+				PRODUCT_NAME = MarkFlow;
+				SDKROOT = macosx;
+				SUPPORTED_PLATFORMS = macosx;
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				TARGETED_DEVICE_FAMILY = "";
+			};
+			name = Release;
+		};
+		C756AA1380E1D9214FDF2B2B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Xcode/MarkFlowApp.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
+				ENABLE_USER_SELECTED_FILES = readwrite;
+				GENERATE_INFOPLIST_FILE = NO;
+				ICON_FILE = "";
+				INFOPLIST_FILE = "Xcode/MarkFlow-Info.plist";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.vikrant.markflow;
+				PRODUCT_NAME = MarkFlow;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = macosx;
+				SUPPORTED_PLATFORMS = macosx;
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				TARGETED_DEVICE_FAMILY = "";
+			};
+			name = Debug;
+		};
+		E063944D6DD93F8BE1941E76 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 6.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3F5D95269B620F5A12046B15 /* Build configuration list for PBXProject "MarkFlow" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9BA503FCD30F931CC2986E08 /* Debug */,
+				E063944D6DD93F8BE1941E76 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		835275E1A3B2D6D283167F99 /* Build configuration list for PBXNativeTarget "MarkFlowApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C756AA1380E1D9214FDF2B2B /* Debug */,
+				A82EB3FC501F6287AAF49A15 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		D9406FEBC98044547412D66E /* Build configuration list for PBXNativeTarget "MarkFlowAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				591A5F6B67F4879FFC423742 /* Debug */,
+				21581CEC36D40347B5EDA4BB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		C59633FA568ED4A529244835 /* XCLocalSwiftPackageReference "." */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = .;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		57483A3C87678689926A95FA /* MarkFlowEngine */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = MarkFlowEngine;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = B2D64F7799F55A4DF8916095 /* Project object */;
+}
