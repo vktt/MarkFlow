@@ -3,7 +3,7 @@
 MarkFlow is a local-first markdown editor for macOS with split-pane editing and preview, PDF export, and print support.
 
 ## Highlights
-- Local-only markdown editing (no cloud dependency required)
+- Local-only markdown editing. No sync or other cloud features (yet!).
 - Native macOS document workflow with multiple tabs/windows
 - Source pane + rendered preview pane
 - Cmd-click sync between preview and source
@@ -18,13 +18,13 @@ MarkFlow is a local-first markdown editor for macOS with split-pane editing and 
 
 ## Requirements
 - macOS 15+
-- Xcode 16+ (project currently generated and built with modern Swift/Xcode toolchain)
+- Xcode 16+ (project currently generated and built with modern Swift/Xcode toolchain v6.2)
 - `xcodegen` (if regenerating `.xcodeproj` from `project.yml`)
 
 ## Quick Start
 1. Clone:
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/vktt/MarkFlow
 cd MarkFlow
 ```
 2. Generate project:
@@ -58,19 +58,9 @@ Run all package tests:
 swift test
 ```
 
-## GitHub Release Checklist
-1. Ensure `swift test` passes.
-2. Build release app.
-3. Zip the app bundle:
-```bash
-cd .xcodebuild/Build/Products/Release
-ditto -c -k --sequesterRsrc --keepParent MarkFlow.app MarkFlow-macOS.zip
-```
-4. Create GitHub release and upload `MarkFlow-macOS.zip`.
-5. (Recommended) Add checksums and release notes.
-
 ## Distribution Note
-Current builds are local/sign-to-run-locally. For distribution without Gatekeeper friction, use a Developer ID certificate and notarization.
+Current builds are local/sign-to-run-locally, expect Gatekeeper friction.
+Fix using `sudo xattr -rd com.apple.quarantine AppPath`
 
 ## Roadmap
 - Scroll-sync improvements
